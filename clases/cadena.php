@@ -154,9 +154,10 @@ HTML;
 
     public function generarCsv()
     {
-        $arreglo = [["Santiago","De la Fuente",37], ["Luciana","Surace", 32]];
+        $arreglo = [['Santiago ','DelaFuente ',37], ["Luciana","Surace", 32]];
         $archivo = './csv/adjunto.csv';
-        $fh = fopen($archivo, 'w+') or die('No se puede abrir el archivo!');
+        // $fh = fopen($archivo, 'w+') or die('No se puede abrir el archivo!');
+        $fh = fopen('php://output', 'w') or die('No se puede abrir el archivo!');
 
         foreach ($arreglo as $persona) {
             if (fputcsv($fh, $persona) === false) {
@@ -165,5 +166,86 @@ HTML;
         }
         fclose($fh) or die("ErrorII!");
         echo "Fin de la carga de CSV.";
+    }
+
+    public function leerArchivoCsv($nombreArchivo)
+    {
+        $archivo = fopen('./csv/' . $nombreArchivo, 'r') or die('No se encontró el archivo!!');
+        $titulo = false;
+        echo "<table>";
+        while ($renglon = fgetcsv($archivo)) {
+            echo "<tr>";
+            for ($i = 0, $j = count($renglon); $i < $j; $i++) {
+                $ta = (!$titulo) ? "<th>" : "<td>";
+                $tb = (!$titulo) ? "</th>" : "</td>";
+                echo $ta . htmlentities($renglon[$i]) . $tb;
+            }
+            $titulo = true;
+            echo "</tr>";
+        }
+        echo "</table>";
+        fclose($archivo) or die("ErrorII!");
+    }
+
+    public function mostrarLibros()
+    {
+        $libros = [
+            ['¿Quien controla el futuro?', 'Jaron Lanier', 2013],
+            ['Humanos', 'Tom Philips', 2018],
+            ['Supernovas', 'Gloria Dubner', 2020],
+        ];
+
+        foreach ($libros as $libro) {
+            echo " - " . pack('A30A20A4', $libro[0], $libro[1], $libro[2]) . "<br>";
+        }
+    }
+
+    public function separandoUnaCadena($frase)
+    {
+        $palabras      = explode(' ', $frase);
+        $enanos        = explode(',', 'tonto,soñoliento,feliz,gruñón,estornudo,tímido,doctor');
+        $enanos        = explode(',', 'tonto,soñoliento,feliz,gruñón,estornudo,tímido,doctor', 4);
+        print_r($enanos);
+        $palabrasSplit = preg_split('/ x /i', '31 centimetros x 25 centimetros x 10 centimetros');
+
+        $cuenta = "3 + 2 / 7 - 9";
+        $pila = preg_split('/ *([+\-\/*]) */', $cuenta, -1, PREG_SPLIT_DELIM_CAPTURE);
+        echo "<pre>";
+        var_dump($pila);
+        echo "</pre>";
+    }
+
+    public function usandoWrapping($supernova = '')
+    {
+        $supernova = "Cuando explotan, las supernovas arrojan material al espacio a 15.000-40.000 kilómetros por segundo. Estas explosiones producen gran parte del material del universo, incluyendo elementos como el hierro, que conforma nuestro planeta e incluso a nosotros mismos. Los elementos pesados sólo se producen en las supernovas, por lo que todos nosotros llevamos en nuestros cuerpos remanentes de estas explosiones.";
+
+        echo "<pre>" . wordwrap($supernova, 120) . "</pre>";
+        echo "<pre>" . wordwrap($supernova, 90, "<hr />") . "</pre>";
+    }
+
+    public function descargarUnCsv()
+    {
+        $libros = [
+            ['¿Quien controla el futuro?', 'Jaron Lanier', 2013],
+            ['Humanos', 'Tom Philips', 2018],
+            ['Supernovas', 'Gloria Dubner', 2020],
+        ];
+
+        $salida = fopen('php://output', 'w') or die('Error al tratar de expulsar información!');
+        $total  = 0;
+
+        header('Content-Type: application/csv');
+        header('Content-Disposition: attatchment; filename="libros.csv"');
+
+        fputcsv($salida, ['Título', 'Escritor', 'Año']);
+
+        foreach ($libros as $libro) {
+            // code...
+            fputcsv($salida, $libro);
+            $total++;
+        }
+
+        fputcsv($salida, ['Total', '--', $total]);
+        fclose($salida) or die("ErrorII!");
     }
 }

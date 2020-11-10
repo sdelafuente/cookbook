@@ -115,5 +115,33 @@
                 $objetoCadena->generarCsv();
             ?>
         </div>
+        <div class="contenido">
+            <h3>Leer CSV: </h3>
+            <?php
+                $objetoCadena->leerArchivoCsv('autos.csv');
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Mostrar contenidos con pack: </h3>
+            <?php
+                $objetoCadena->mostrarLibros('autos.csv');
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>preg_split, explode: </h3>
+            <?php
+                $objetoCadena->separandoUnaCadena('Las filtraciones de Snowden hicieron un mundo distinto');
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>wordwrap:  </h3>
+            <?php
+                $objetoCadena->usandoWrapping('Las filtraciones de Snowden hicieron un mundo distinto');
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Descargar un CSV:  </h3>
+            <a href="descargar.php" target="_blank">Descargar un CSV por Link</a>
+        </div>
     </body>
 </html>
