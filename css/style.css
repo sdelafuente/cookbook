@@ -45,7 +45,7 @@ ol, ul {
 #main_nav {
     background: #F3E2A9;
     /* padding: 2em 0; */
-	position: absolute;
+	position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -72,19 +72,20 @@ ol, ul {
 
 /* Pesudo clases dinámicas */
 #main_nav li a:active {
-    color: red;
+    /* color: red; */
 }
 
 #main_nav li a:hover {
     text-decoration: none;
-    color: #0B2161;
-    background-color: #CECEF6;
+    /* color: #0B2161;
+    background-color: #CECEF6; */
 }
 
 #main_nav li a:focus {
 	text-decoration: none;
-	color:red;
-	background: black;
+    outline: none;
+	/* color:red;
+	background: black; */
 
 }
 

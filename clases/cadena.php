@@ -170,7 +170,7 @@ HTML;
 
     public function leerArchivoCsv($nombreArchivo)
     {
-        $archivo = fopen('./csv/' . $nombreArchivo, 'r') or die('No se encontró el archivo!!');
+        $archivo = fopen('../csv/' . $nombreArchivo, 'r') or die('No se encontró el archivo!!');
         $titulo = false;
         echo "<table>";
         while ($renglon = fgetcsv($archivo)) {
