@@ -15,7 +15,7 @@
          ?>
     </head>
     <body >
-        <h1>PHP Cookbook</h1>
+        <h1 >PHP Cookbook</h1>
         <nav id="main_nav">
             <ul>
                 <li>
@@ -25,45 +25,10 @@
                     <a href="../paginas/cadenas.php" tabindex="2">Cadenas</a>
                 </li>
                 <li>
-                    <!-- <a href="../paginas/numeros.php" tabindex="3">Numeros</a> -->
-                    <a href="#" tabindex="3">Numeros</a>
+                    <a href="../paginas/numeros.php" tabindex="3">Numeros</a>
                 </li>
             </ul>
         </nav>
-        <div class="contenido">
-            <h3>¿Es numérico?</h3>
-            <?php
-                $objetoNumero->esNumerico();
-            ?>
-        </div>
-        <div class="contenido">
-            <h3>¿Son dos floats iguales?</h3>
-            <?php
-                $objetoNumero->sonFloatsIguales();
-            ?>
-        </div>
-        <div class="contenido">
-            <h3>round, ceil, floor - redondead flotantes.</h3>
-            <?php
-                $objetoNumero->redondearFlotantes();
-            ?>
-        </div>
-        <div class="contenido">
-            <h3>Iterar con una serie de números.</h3>
-            <?php
-                $objetoNumero->operarEnSerieConNumeros();
-            ?>
-        </div>
-        <div class="contenido">
-            <h3>Generar un número aleatorio con mt_rand().</h3>
-            <?php
-                $objetoNumero->generarUnNumeroRandom();
-            ?>
-            <hr>
-            <h3>Generar un número aleatorio predecible con mt_rand().</h3>
-            <?php
-                $objetoNumero->generarUnNumeroAleatorioPredecible();
-            ?>
-        </div>
+
     </body>
 </html>
