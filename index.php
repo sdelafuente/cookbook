@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="css/style.css">
         <title>PHP COOKBOOK</title>
         <?php
-            include './clases/numero.php';
-            $objetoNumero = new Numero();
+            include './clases/tiempo.php';
+            $objetoTiempo = new Tiempo();
          ?>
     </head>
     <body >
@@ -27,8 +27,40 @@
                 <li>
                     <a href="../paginas/numeros.php" tabindex="3">Numeros</a>
                 </li>
+                <li>
+                    <a href="#" tabindex="3">Fechas</a>
+                </li>
             </ul>
         </nav>
-
+        <div class="contenido">
+            <h3>¿Que fecha es ahora?</h3>
+            <?php
+                // $objetoTiempo->queFechaEsAhora();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Convertir Epoch a timestamp </h3>
+            <?php
+                // $objetoTiempo->convertirEpochDeTimestap();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Convertir timestamp a Date & Time</h3>
+            <?php
+                // $objetoTiempo->convertirTimestapATimeDate();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Dar formato a las fechas</h3>
+            <?php
+                // $objetoTiempo->darFormatoEspecificoAUnaFecha();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Diferencia entre dos fechas</h3>
+            <?php
+                $objetoTiempo->diferenciaEntreDosFechas();
+            ?>
+        </div>
     </body>
 </html>
