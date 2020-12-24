@@ -59,7 +59,37 @@
         <div class="contenido">
             <h3>Diferencia entre dos fechas</h3>
             <?php
-                $objetoTiempo->diferenciaEntreDosFechas();
+                // $objetoTiempo->diferenciaEntreDosFechas();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Encontrar el día en la semana, mes y año</h3>
+            <?php
+                // $objetoTiempo->encontrarUnDiaEnSemanaMesAno();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Verifica que una fecha sea correcta. (Si dejas que el usuario meta info de más)</h3>
+            <?php
+                // $objetoTiempo->verificarUnaFecha();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Analizar una fecha y hora desde una cadena de caracteres</h3>
+            <?php
+                // $objetoTiempo->analizarFechaHoraDeUnaCadena();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Agregar o eliminar de una fecha</h3>
+            <?php
+                // $objetoTiempo->AgregarOEliminarDeUnaFecha();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Calcular la fecha en diferentes zonas horarias</h3>
+            <?php
+                $objetoTiempo->calcularDiferenciaEntreZonasHorarias();
             ?>
         </div>
     </body>

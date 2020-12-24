@@ -105,4 +105,86 @@ class Tiempo
         echo "<br />";
     }
 
+    public function encontrarUnDiaEnSemanaMesAno()
+    {
+        echo "Hoy es es " . date('d') . " del mes y " . date('z') . " del año.";
+        echo "<br />";
+
+        $miCumpleaños = new DateTime('June 22, 1983', new DateTimeZone('America/Sao_Paulo'));
+
+        echo "Mi nacimiento fue un " . $miCumpleaños->format('l') . ", día " . $miCumpleaños->format('N') . " de la semana.";
+        echo "<br />";
+    }
+
+    public function verificarUnaFecha()
+    {
+        echo (int)checkdate(6, 22, 1983);
+        echo "<br />";
+        echo (int)checkdate(7, 32, 1988);
+        echo "<br />";
+    }
+
+    public function analizarFechaHoraDeUnaCadena()
+    {
+        $a = strtotime('june 22');
+        $b = strtotime('last thursday');
+        $c = strtotime('now + two months');
+        echo date(DATE_RFC850, $a);
+        echo "<br />";
+        echo date(DATE_RFC850, $b);
+        echo "<br />";
+        echo date(DATE_RFC850, $c);
+        echo "<br />";
+        echo "<br />";
+
+        echo date(DATE_RFC850, strtotime('now'));
+        echo "<br />";
+        echo date(DATE_RFC850, strtotime('today'));
+        echo "<br />";
+
+    }
+
+    public function AgregarOEliminarDeUnaFecha($value='')
+    {
+        $miCumpleaños = new DateTime('June 22, 1983', new DateTimeZone('America/Sao_Paulo'));
+        $gestación = new DateInterval('P40W');
+        $miCumpleaños->sub($gestación);
+        echo $miCumpleaños->format(DateTime::RFC850);
+        echo "<br />";
+        echo "<br />";
+
+        $gestación = new DateInterval('P616D');
+        $miCumpleaños->add($gestación);
+        echo $miCumpleaños->format(DateTime::RFC850);
+        echo "<br />";
+
+        echo "<hr />";
+
+        $año = 2020;
+        $cuando = new DateTime("November 1, $año");
+        if ($cuando->format('N') != 1) {
+            $cuando->modify("next Monday");
+        }
+        $cuando->modify("next Tuesday");
+
+        echo "En el año $año, Las elecciones de los Yankees fue el " . $cuando->format('jS') . " día de Noviembre";
+        echo "<br />";
+
+    }
+
+    public function calcularDiferenciaEntreZonasHorarias()
+    {
+        $ahoraEnBuenosAires = new DateTime('now', new DateTimeZone('America/Sao_Paulo'));
+        $ahoraEnCalifornia  = new DateTime('now', new DateTimeZone('America/Los_Angeles'));
+        printf("Buenos Aires: %s; California: %s.",
+            $ahoraEnBuenosAires->format(DateTime::RFC850),
+            $ahoraEnCalifornia->format(DateTime::RFC850)
+        );
+        echo "<br />";
+
+        $ahora = time();
+        date_default_timezone_set('Europe/Dublin');
+        echo 'Dublin: ' . date(DATE_RFC850, $ahora);
+        echo "<br />";
+    }
 }
