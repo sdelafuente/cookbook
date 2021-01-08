@@ -187,4 +187,36 @@ class Tiempo
         echo 'Dublin: ' . date(DATE_RFC850, $ahora);
         echo "<br />";
     }
+
+    public function generarTiempoDeAltaPrecision()
+    {
+        $comienzo = microtime(true);
+        for ($inicio = 0; $inicio < 1000; $inicio++) {
+            preg_match('/age=\d{1,5}/', $_SERVER['QUERY_STRING']);
+        }
+        $final = microtime(true);
+
+        echo $final - $comienzo;
+        echo "<br />";
+
+        list($microsegundos, $segundos) = explode(' ', microtime());
+
+        $id = $segundos.$microsegundos.getmygid();
+        echo $id;
+        echo "<br />";
+    }
+
+    public function generarRangosDeTiempo()
+    {
+        $inicio    = new DateTime('August 1, 2016', new DateTimeZone('America/Sao_Paulo'));
+        $final     = new DateTime('September 1, 2016', new DateTimeZone('America/Sao_Paulo'));
+        $intervalo = new DateInterval('P1D');
+
+        $rango = new DatePeriod($inicio, $intervalo, $final);
+        foreach ($rango as $dia) {
+            echo "Un día en Agosto es " . $dia->format('d') . "<br />";
+        }
+
+
+    }
 }

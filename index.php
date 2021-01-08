@@ -89,7 +89,19 @@
         <div class="contenido">
             <h3>Calcular la fecha en diferentes zonas horarias</h3>
             <?php
-                $objetoTiempo->calcularDiferenciaEntreZonasHorarias();
+                // $objetoTiempo->calcularDiferenciaEntreZonasHorarias();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Crear IDs unicos con tiempo en alta precisión</h3>
+            <?php
+                // $objetoTiempo->generarTiempoDeAltaPrecision();
+            ?>
+        </div>
+        <div class="contenido">
+            <h3>Generar rangos de tiempo</h3>
+            <?php
+                $objetoTiempo->generarRangosDeTiempo();
             ?>
         </div>
     </body>
